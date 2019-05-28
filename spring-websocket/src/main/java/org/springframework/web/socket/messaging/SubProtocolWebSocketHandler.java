@@ -248,13 +248,14 @@ public class SubProtocolWebSocketHandler
 
 	/**
 	 * Return a String describing internal state and counters.
+	 * Effectively {@code toString()} on {@link #getStats() getStats()}.
 	 */
 	public String getStatsInfo() {
 		return this.stats.toString();
 	}
 
 	/**
-	 * Return a {@link Stats} object that containers various session counters.
+	 * Return a structured object with various session counters.
 	 * @since 5.2
 	 */
 	public Stats getStats() {
@@ -429,7 +430,7 @@ public class SubProtocolWebSocketHandler
 		}
 
 		SubProtocolHandler handler;
-		if (!StringUtils.isEmpty(protocol)) {
+		if (StringUtils.hasLength(protocol)) {
 			handler = this.protocolHandlerLookup.get(protocol);
 			if (handler == null) {
 				throw new IllegalStateException(
