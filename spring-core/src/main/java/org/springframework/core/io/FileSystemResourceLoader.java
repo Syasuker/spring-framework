@@ -17,34 +17,17 @@
 package org.springframework.core.io;
 
 /**
- * {@link ResourceLoader} implementation that resolves plain paths as
- * file system resources rather than as class path resources
- * (the latter is {@link DefaultResourceLoader}'s default strategy).
+ * 其实 DefaultResourceLoader 对#getResourceByPath(String) 方法处理其实不是很恰当，
+ * 这个时候我们可以使用 org.springframework.core.io.FileSystemResourceLoader 。
  *
- * <p><b>NOTE:</b> Plain paths will always be interpreted as relative
- * to the current VM working directory, even if they start with a slash.
- * (This is consistent with the semantics in a Servlet container.)
- * <b>Use an explicit "file:" prefix to enforce an absolute file path.</b>
- *
- * <p>{@link org.springframework.context.support.FileSystemXmlApplicationContext}
- * is a full-fledged ApplicationContext implementation that provides
- * the same resource path resolution strategy.
- *
- * @author Juergen Hoeller
- * @since 1.1.3
- * @see DefaultResourceLoader
- * @see org.springframework.context.support.FileSystemXmlApplicationContext
+ * 它继承 DefaultResourceLoader ，且覆写了 #getResourceByPath(String) 方法，
+ * 使之从文件系统加载资源并以 FileSystemResource 类型返回，这样我们就可以得到想要的资源类型。
  */
 public class FileSystemResourceLoader extends DefaultResourceLoader {
 
 	/**
-	 * Resolve resource paths as file system paths.
-	 * <p>Note: Even if a given path starts with a slash, it will get
-	 * interpreted as relative to the current VM working directory.
-	 * @param path the path to the resource
-	 * @return the corresponding Resource handle
-	 * @see FileSystemResource
-	 * @see org.springframework.web.context.support.ServletContextResourceLoader#getResourceByPath
+	 * 截取首 /
+	 * 创建 FileSystemContextResource 类型的资源
 	 */
 	@Override
 	protected Resource getResourceByPath(String path) {
@@ -56,8 +39,10 @@ public class FileSystemResourceLoader extends DefaultResourceLoader {
 
 
 	/**
-	 * FileSystemResource that explicitly expresses a context-relative path
-	 * through implementing the ContextResource interface.
+	 * 为 FileSystemResourceLoader 的内部类
+	 * 它继承 FileSystemResource 类，实现 ContextResource 接口。
+	 *
+	 * 为什么要搞一个内部类呢？
 	 */
 	private static class FileSystemContextResource extends FileSystemResource implements ContextResource {
 

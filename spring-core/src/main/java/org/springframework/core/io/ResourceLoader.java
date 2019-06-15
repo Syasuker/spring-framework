@@ -36,9 +36,9 @@ public interface ResourceLoader {
 	 * 但是它不确保该 Resource 一定存在，需要调用 Resource#exist() 方法来判断
 	 *
 	 * 该方法支持以下模式的资源加载：
-	 *   URL位置资源，如 "file:C:/test.dat" 。
-	 *   ClassPath位置资源，如 "classpath:test.dat 。
-	 *   相对路径资源，如 "WEB-INF/test.dat" ，此时返回的Resource 实例，根据实现不同而不同
+	 *    URL位置资源，如 "file:C:/test.dat" 。
+	 *    ClassPath位置资源，如 "classpath:test.dat 。
+	 *    相对路径资源，如 "WEB-INF/test.dat" ，此时返回的Resource 实例，根据实现不同而不同
 	 */
 	Resource getResource(String location);
 
