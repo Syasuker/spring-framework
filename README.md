@@ -1,30 +1,57 @@
-# <img src="src/docs/asciidoc/images/spring-framework.png" width="80" height="80"> Spring Framework
+# Spring源码解读
 
-This is the home of the Spring Framework: the foundation for all [Spring projects](https://spring.io/projects). Collectively the Spring Framework and the family of Spring projects is often referred to simply as "Spring". 
+想要对某一个框架精通，免不了对它的源码进行阅读和理解。
 
-Spring provides everything required beyond the Java programming language for creating enterprise applications for a wide range of scenarios and architectures. Please read the [Overview](https://docs.spring.io/spring/docs/current/spring-framework-reference/overview.html#spring-introduction) section as reference for a more complete introduction.
+想要对某一个语言的设计进行学习，免不了对它编写的优秀框架进行分析。
 
-## Code of Conduct
+在阅读源码这样的一个快乐又枯燥的过程中，我觉得对代码的见识、规范和深度上都有一定的收获。
 
-This project is governed by the [Spring Code of Conduct](CODE_OF_CONDUCT.adoc). By participating, you are expected to uphold this code of conduct. Please report unacceptable behavior to spring-code-of-conduct@pivotal.io.
+但是呢，在读一个非常庞大的源码的时候(代码量多，设计复杂)，我们自己很难快速上手，往往还没真正领略到优秀代码的风情，就在层层的设计中消磨了自己的兴趣。所以在前人的带领下，自己再独自源码阅读还是比较好的选择(大佬自动忽略)
 
-## Access to Binaries
+我的源码阅读是在 《Spring源码深度解析》 这本书和 [Java 技术驿站的死磕spring](http://cmsblogs.com/?cat=206) 的基础上进行的，而我自己也根据阅读得到的笔记和知识做了自己的解读出来。加上了自己的绘图，更加容易理解。
 
-For access to artifacts or a distribution zip, see the [Spring Framework Artifacts](https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-Artifacts) wiki page.
+## Spring IoC 的解读
 
-## Documentation
+[(1)前言.md](https://github.com/esmusssein777/spring-framework/blob/master/源码阅读笔记/(1)前言.md)
 
-The Spring Framework maintains reference documentation ([published](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/) and [source](src/docs/asciidoc)), Github [wiki pages](https://github.com/spring-projects/spring-framework/wiki), and an
-[API reference](https://docs.spring.io/spring-framework/docs/current/javadoc-api/). There are also [guides and tutorials](https://spring.io/guides) across Spring projects.
+[(2)Spring IOC的开始.md](https://github.com/esmusssein777/spring-framework/blob/master/源码阅读笔记/(2)Spring IOC的开始.md)
 
-## Build from Source
+[(3)IoC之Resource定位.md](https://github.com/esmusssein777/spring-framework/blob/master/源码阅读笔记/(3)IoC之Resource定位.md)
 
-See the [Build from Source](https://github.com/spring-projects/spring-framework/wiki/Build-from-Source) Wiki page and the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+[(4)IoC之BeanDefinition的装载.md](https://github.com/esmusssein777/spring-framework/blob/master/源码阅读笔记/(4)IoC之BeanDefinition的装载.md)
 
-## Stay in Touch
+[(5)IoC之BeanDefinition的解析和注册.md](https://github.com/esmusssein777/spring-framework/blob/master/源码阅读笔记/(5)IoC之BeanDefinition的解析和注册.md)
 
-Follow [@SpringCentral](https://twitter.com/springcentral), [@SpringFramework](https://twitter.com/springframework), and its [team members](https://twitter.com/springframework/lists/team/members) on Twitter. In-depth articles can be found at [The Spring Blog](https://spring.io/blog/), and releases are announced via our [news feed](https://spring.io/blog/category/news).
+[(6)IoC之Bean的加载.md](https://github.com/esmusssein777/spring-framework/blob/master/源码阅读笔记/(6)IoC之Bean的加载.md)
 
-## License
+[(7)IoC之Bean的创建.md](https://github.com/esmusssein777/spring-framework/blob/master/源码阅读笔记/(7)IoC之Bean的创建.md)
 
-The Spring Framework is released under version 2.0 of the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
+
+
+其实最后我阅读这些代码和写笔记的时间远超出我的预期，不过收获颇丰。希望都能耐心好好阅读。
+
+### IoC的流程图
+
+#### BeanDefinition的流程
+
+![](https://github.com/esmusssein777/study/blob/master/md/picture/XML2BeanDefinition.png?raw=true)
+
+
+
+#### Bean 的加载
+
+![](https://github.com/esmusssein777/study/blob/master/md/picture/Name2Scope.png?raw=true)
+
+
+
+#### Bean 的创建
+
+![](https://github.com/esmusssein777/study/blob/master/md/picture/Bean.png?raw=true)
+
+
+
+## 工具
+
+UML图：代码的UML图用的是IDEA自带的 Diagram
+
+流程图：[draw.io](https://www.draw.io/)
