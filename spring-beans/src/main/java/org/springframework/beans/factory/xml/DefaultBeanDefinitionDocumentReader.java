@@ -121,12 +121,6 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 	 */
 	@SuppressWarnings("deprecation")  // for Environment.acceptsProfiles(String...)
 	protected void doRegisterBeanDefinitions(Element root) {
-		// Any nested <beans> elements will cause recursion in this method. In
-		// order to propagate and preserve <beans> default-* attributes correctly,
-		// keep track of the current (parent) delegate, which may be null. Create
-		// the new (child) delegate with a reference to the parent for fallback purposes,
-		// then ultimately reset this.delegate back to its original (parent) reference.
-		// this behavior emulates a stack of delegates without actually necessitating one.
 		//BeanDefinitionParserDelegate 它负责解析 BeanDefinition
 		BeanDefinitionParserDelegate parent = this.delegate;
 		// <1> 创建 BeanDefinitionParserDelegate 对象，并进行设置到 delegate
@@ -157,7 +151,6 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 		parseBeanDefinitions(root, this.delegate);
 		// <5> 解析后处理
 		postProcessXml(root);
-
 		this.delegate = parent;
 	}
 
@@ -216,8 +209,7 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 	}
 
 	/**
-	 * Parse an "import" element and load the bean definitions
-	 * from the given resource into the bean factory.
+	 * 解析 import 标签
 	 */
 	protected void importBeanDefinitionResource(Element ele) {
 		// <1> 获取 resource 的属性值
@@ -294,7 +286,7 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 	}
 
 	/**
-	 * Process the given alias element, registering the alias with the registry.
+	 * 解析 alias 标签
 	 */
 	protected void processAliasRegistration(Element ele) {
 		String name = ele.getAttribute(NAME_ATTRIBUTE);

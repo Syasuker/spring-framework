@@ -22,15 +22,9 @@ import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
 
 /**
- * Strategy interface for loading an XML {@link Document}.
- *
- * @author Rob Harrop
- * @since 2.0
- * @see DefaultDocumentLoader
  * 定义从资源文件加载到转换为 Document 的功能。
  */
 public interface DocumentLoader {
-
 	/**
 	 * Load a {@link Document document} from the supplied {@link InputSource source}.
 	 * @param inputSource 加载 Document 的 Resource 资源。
@@ -45,5 +39,4 @@ public interface DocumentLoader {
 			InputSource inputSource, EntityResolver entityResolver,
 			ErrorHandler errorHandler, int validationMode, boolean namespaceAware)
 			throws Exception;
-
 }

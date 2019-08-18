@@ -153,12 +153,10 @@ public class DefaultResourceLoader implements ResourceLoader {
 		}// 然后，根据是否为文件 URL ，是则返回 FileUrlResource 类型的资源，否则返回 UrlResource 类型的资源
 		else {
 			try {
-				// Try to parse the location as a URL...
 				URL url = new URL(location);
 				return (ResourceUtils.isFileURL(url) ? new FileUrlResource(url) : new UrlResource(url));
 			}
 			catch (MalformedURLException ex) {
-				// No URL -> resolve as resource path.
 				// 最后，返回 ClassPathContextResource 类型的资源
 				return getResourceByPath(location);
 			}
